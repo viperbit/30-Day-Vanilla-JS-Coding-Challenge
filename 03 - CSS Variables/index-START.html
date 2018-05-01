@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Scoped CSS Variables and JS</title>
 </head>
+
 <body>
-  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+  <h2>Update CSS Variables with
+    <span class='hl'>JS</span>
+  </h2>
 
   <div class="controls">
     <label for="spacing">Spacing:</label>
@@ -21,10 +25,17 @@
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
   <style>
+    :root {
+      --base: #ffc600;
+      --spacing: 10px;
+      --blur: 10px;
+    }
 
-    /*
-      misc styles, nothing to do with CSS variables
-    */
+    img {
+      padding: var(--spacing);
+      background-color: var(--base);
+      filter: blur(var(--blur));
+    }
 
     body {
       text-align: center;
@@ -40,12 +51,24 @@
     }
 
     input {
-      width:100px;
+      width: 100px;
     }
   </style>
 
   <script>
+
+    const inputs = document.querySelectorAll('input');
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || '';
+      console.log(suffix);
+      const name = this.name;
+      const value = this.value;
+      document.documentElement.style.setProperty(`--${name}`, `${value}${suffix}`)
+    }
+    //console.log(inputs);
+    inputs.forEach(input => input.addEventListener('change', handleUpdate))
   </script>
 
 </body>
+
 </html>
