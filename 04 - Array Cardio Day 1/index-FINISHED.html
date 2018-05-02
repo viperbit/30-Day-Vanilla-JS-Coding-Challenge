@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Array Cardio 💪</title>
 </head>
+
 <body>
-  <p><em>Psst: have a look at the JavaScript Console</em> 💁</p>
+  <p>
+    <em>Psst: have a look at the JavaScript Console</em> 💁</p>
   <script>
     // Get your shorts on - this is an array workout!
     // ## Array Cardio Day 1
@@ -50,7 +53,9 @@
     //   }
     // });
 
-    const ordered = inventors.sort((a, b) => a.year > b.year ? 1 : -1);
+    const ordered = inventors.sort((a, b) => {
+      return a.year > b.year ? 1 : -1
+    });
     console.table(ordered);
 
     // Array.prototype.reduce()
@@ -59,10 +64,10 @@
       return total + (inventor.passed - inventor.year);
     }, 0);
 
-    console.log(totalYears);
+    console.log('4', totalYears);
 
     // 5. Sort the inventors by years lived
-    const oldest = inventors.sort(function(a, b) {
+    const oldest = inventors.sort(function (a, b) {
       const lastInventor = a.passed - a.year;
       const nextInventor = b.passed - b.year;
       return lastInventor > nextInventor ? -1 : 1;
@@ -85,13 +90,13 @@
       const [bLast, bFirst] = nextOne.split(', ');
       return aLast > bLast ? 1 : -1;
     });
-    console.log(alpha);
+    console.log('7:', alpha);
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck', 'pogostick'];
 
-    const transportation = data.reduce(function(obj, item) {
+    const transportation = data.reduce(function (obj, item) {
       if (!obj[item]) {
         obj[item] = 0;
       }
@@ -103,4 +108,5 @@
 
   </script>
 </body>
+
 </html>
